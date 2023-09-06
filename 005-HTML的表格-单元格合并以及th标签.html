@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+		<title>表格单元格合并，以及th标签</title>
+	</head>
+	<body>
+
+		<!--
+			1、row合并的时候（上下），删除“下面的”单元格，然后上面的单元格设置属性rowspan="~"即可
+			2、col合并时，对于删除没有要求，删除哪个都行
+		-->
+		<table border="1px" width="50%">
+			<tr>
+				<!--
+				<td>员工编号</td>
+				<td>员工薪资</td>
+				<td>员工名称</td>
+				-->
+				<!--th标签也是单元格标签，比td多的是居中和加粗-->
+				<th>员工编号</th>
+				<th>员工薪资</th>
+				<th>员工名称</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td colspan="2">2</td>
+				<!--
+				<td>3</td>
+				-->
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>5</td>
+				<td rowspan="2">6</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>8</td>
+				<!--
+				<td>9</td>
+				-->
+			</tr>
+		</table>
+		
+
+	</body>
+
+</html>
