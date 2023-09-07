@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表单</title>
+	</head>
+	<body>
+		<!--
+			1、表单有什么用？
+				收集用户信息。
+				表单展现之后，用户填写表单，点击提交按钮提交数据给服务器。
+			2、怎么画一个表单呢？
+				使用form标签画表单。
+			3、一个网页当中可以有多个表单form。
+			4、表单最终是需要提交数据给服务器的，所以fome标签有一个属性action，里面是服务器的地址。
+				action属性用来指定数据提交给了哪个服务器。
+				action属性和href属性一样，都可以向服务器发送请求(request)。
+			5、http://192.168.111.3:8080/oa/save,这是请求路径，表单提交数据最终
+			提交给192.168.111.3机器上的8080端口对应的软件
+		-->
+		<form action="http:..192.168.111.3:8080/oa/save">
+			<!--画一个提交按钮，这个按钮可以提交表单-->
+			<!--
+				画按钮可以使用input输入域，input标签有属性type,type="submit"时
+				表示该按钮是一个提交按钮，具有提交表单的能力,input标签还有value
+				属性，设置按钮上显示的文本。
+			-->
+			<input type="submit" value="登录"/><!--我把</input>省略了，改为前面加“/”-->
+			
+			<!--这是一个普通按钮，不具有提交表单的能力-->
+			<input type="button"/>;
+			
+		</form>
+		<!--这个按钮i和普通的超链接没有什么大的区别。（超链接和表单都可以向服务器发送请求，只不过表单在发送请求的同时可以携带数据）-->	
+		<form action="http://www.baidu.com">
+			<input type="text"/>
+			<input type="submit" value="百度"/>
+		</form>
+		
+		<br>
+		<br>
+		<br>
+		
+		
+		<form action="http://localhost:8080/jd/save">
+			用户名<input type="text"/><br>
+			密码<input type="password"/><br>
+			<input type="submit" value="登录"/>	
+		</form>
+		
+		
+		
+		<!--利用之前学过的表格更加美观-->
+		<!--
+			1、按钮input标签必须在form标签内部，才会有自己的作用实现
+			2、imput标签属性有个name
+			3、表单是以什么格式提交数据给服务器的？
+				提交示例：http://localhost:8080/jd/save?username=abc&userpwd=111
+				！！！！！！格式：action?name=value&name=value&name=value&name=value&.....
+				action是域名，name是input标签中的name属性，value是input标签中的value属性
+				对于type为text和password的input，我们就不需要加入value属性了，用户输入什么，value就是什么！
+				value没有写时，value的默认值是空字符串“”，会将空字符串提交给服务器		
+						
+			重点强调：表单项写了name属性的，一律会提交给服务器，不提交这一项，就不要写name属性就行	
+			
+		-->
+		<form action="http://localhost:8080/jd/save">
+		<table>
+			<tr>
+				<td>用户名</td>
+				<td><input type="text" name="username"  /></td>
+			</tr>
+			<tr>
+				<td>密码</td>
+				<td><input type="password" name="userpwd"/></td>
+			</tr>
+			<tr align="center">
+				<td colspan="2">
+					<input type="submit" value="登录"/>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="reset" value="清空"/>
+				</td>
+			</tr>
+		<table>
+		
+		</form>
+		
+		
+		
+		
+		<form></form>
+		
+		
+	</body>
+</html>
