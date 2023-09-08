@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>HTML中的元素id属性</title>
+	</head>
+	<body>
+		<a href="屏幕截图 2023-09-08 134314.png">
+			文档树（DOM树）
+		</a>
+		<!--
+			1、在HTML文档当中，任何元素（就是节点）都有id属性，比如head节点，body节点，
+			标题结点，id属性时该节点的唯一标识，所以在同一个HTML文档当中id值不能重复！！！
+			2、表单提交数据时，只和name有关，和id无关
+			3、id有什么用？
+				javaScript语言：可以对html文档当中的任何节点进行增删改操作。达到网页的动态效果。
+				所以我们后面是通过id属性来找到这个节点，进而进行操作
+				id的存在让我们获取元素（节点）更加方便
+			4、HTML文档是一棵树，数上有很多节点，每一个节点都有唯一的id。	
+		-->
+		
+		<!--id属性就是每个节点的身份证号码，不能重复的！！！-->
+		<input type="text" id="username" name="username" />
+		<input type="text" id="usepwd" name="userpwd" />
+		<!--
+		<input type="text" id="username" name="userwad" />
+		-->
+	</body>
+</html>

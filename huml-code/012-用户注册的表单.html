@@ -5,10 +5,70 @@
 		<title>用户注册的表单</title>
 	</head>
 	<body>
+		<!--谨记：提交为name=value.................-->
 		<!--
-			1、
-		
-		
+			1、用户注册:
+				用户名
+				密码
+				确认密码
+				性别
+				兴趣爱好
+				学历
+				简介
+			form表单method属性：
+				get：采用get方式提交时，用户提交的信息会显示在浏览器的地址栏上
+				post：采用post方式提交时，用户提交的信息不会显示在浏览器的地址栏上
+				当用户提交的信息中含有敏感信息时，例如：密码等，建议采用post方式提交
+				不写时，默认为get方式提交
+				
+				post提交的时候提交的数据和get还是一样的，只不过不在地址栏上显示出来
 		-->
+		<form action="http://localhost:8080/jd/register" method="post">
+			用户名
+			<input type="text" name=username""/>
+			<br>
+			密码
+			<input type="password" name="userpwd">
+			<br>
+			确认密码
+			<input type="password" ><!--确认密码和密码是否一致在浏览器中已经被判断了，当相同时，即密码和确认密码相同，所以确认密码就不需要提交给服务器了-->
+			<br>
+			性别<!--这里面有许多细节,多个选一个-->
+			<!--name相同时，为一组单选按钮，表示name相同的这一组中最后只有一个可以被提交给服务器-->
+			<!--name不同时，表示n都可以提交给服务器-->
+			<!--下面的name是相同的，所以就是两个里面只有一个可以提交给服务器，男或者女-->
+			<!--
+				！！！！！！我们input标签外面的男和女是给用户的提示，而不是提交给服务器的，提交服务器的是name和value，
+				所以，外面为了给服务器提交性别是男还是女时，就需要value属性了.总之，对于单选按钮的value必须手动指定。
+			-->
+			<!--要让按钮默认选中，就用checked-->
+			<input type="radio" name="gender" value="1" checked/>男
+			<input type="radio" name="gender" value="0"/>女
+			<br>
+			兴趣爱好<!--多选项，多个选多个-->
+			<input type="checkbox" name="interest" value="smoke"  checked/>抽烟
+			<input type="checkbox" name="interest" value="drink" checked/>喝酒
+			<input type="checkbox" name="interest" value="fireHair" />烫头
+			<br>
+			学历<!--下拉列表-->
+			<select name="grade">
+				<option value="gz">高中<option>
+				<option value="dz">大专<option>
+				<option value="bk" selected>本科<option><!--selected表示默认选中-->
+				<option value="ss">硕士<option>
+			</select>
+			<br>
+			简介<!--文本域,属性rows和cols控制文本框的行和列长度,文本域就没有value属性，用户填写的内容就是value-->
+			<textarea rows="10" cols="60" name="introduce"></textarea>
+			<br>
+			<input type="submit" value="注册">
+			<input type="reset" value="清空">
+		</form>
+		
+		<!--超链接也是可以提交数据给服务器的，但是提交的数据都是固定不变的，而表单提交的数据是用户自己写的-->
+		<!--超链接时get请求，不是post请求-->
+		<a href="http://localhost:8080/oa/save?username=zhangsan&oassword=111">
+			提交
+		</a>
 	</body>
 </html>

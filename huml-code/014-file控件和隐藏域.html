@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>file控件，隐藏域</title>
+	</head>
+	<body>
+		<!--file控件，文件上传专用-->
+		<input type="file" />
+		<form action="http://localhost:8080/ow/save">
+			<!--
+				(很重要！！！)隐藏域：网页上看不到，但是表单提交的时候数据会
+				自动提交给服务器。要注意：隐藏域不是为了保密，因为保密与否看的
+				是form的表单属性method，这儿隐藏只是为了不给用户展示出来，不用让用户
+				写或者看，为了美观与少占一个位置
+			-->
+			<input type="hidden" name="userid" value="111">
+			用户代码<input type="text" name="usercode"/>
+			<input type="submit" value="提交"/>
+		</form>
+	</body>
+</html>
