@@ -4,11 +4,16 @@
 		<meta charset="utf-8">
 		<title>readonly disabled</title>
 	</head>
+
 	<body>
+		<!--
+			readonly和disabled相同点：只是只读不能修改
+			但是readonly可以提交给服务器，disabled的数据不会提交（即使有name属性也不会提交），所以只有要disabl时，name属性就没必要存在了
+		-->
 		<form action="http://localhost:8080/taobao/save">
-			用户代码<input type="text" name="usercode" value=110"" readonly />
+			用户代码<input type="text" name="usercode" value="110 readonly />
 			<br>
-			用户姓名<input type="text" name="username"  value="zhangsan" disabled />
+			用户姓名<input type="text"  value="zhangsan" disabled />
 			<br>
 			<input type="submit" value="提交数据"/>
 			
