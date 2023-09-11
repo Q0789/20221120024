@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>关于JS中的变量</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+				回顾java中的变量：
+					1、java中怎么定义/声明变量
+						数据类型 变量名；
+						例如：
+							int i;
+							double d;
+							boolean flag;
+					2、java中的变量如何赋值？
+						使用“=”运算符进行赋值运算（右边赋值给左边）
+						变量名 = 值
+						例如：
+							i=10；
+							d=3.14
+							flag=false;
+					3、java语言是一种强类型语言，强类型怎么理解？
+						java语言存在编译阶段，假设有代码：int i；
+						那么在java中有这样一个特点是：java程序编译
+						阶段就已经确定了i变量的数据类型，那么这个变量
+						到最终内存释放，一直都是int类型，不可能变成
+						其他类型
+					
+				JavaScript中的变量:
+					怎么声明变量？
+						var 变量名;
+					怎么给变量赋值？
+						变量名=值;
+					JavaScript是一种弱类型语言，没有编译阶段，一个变量可以随意赋值，想赋什么就赋什么！！！
+			*/
+		   //在JS中，一个变量没有手动赋值时，系统默认赋值为undefined。
+			var i;
+			//undefined在JS中是一个具体的存在值。
+			alert("i = " + i);//i=undefined
+			
+			alert(undefined);
+			var k = undefined;
+			alert("k = " + k);
+			
+			//一个变量没有定义/声明，直接访问会出现问题？
+			//alert(age);//Uncaught ReferenceError: age is not defined（变量没定义就使用，是错误的）
+			
+			//在浏览器界面，按F12就可以调试了（用到的有查看器，控制台和网络）
+			
+			var a, b, c = 200;
+			alert("a= " + a);
+			alert("b= " + b);
+			alert("c= " + c);
+			
+			a=false;
+			alert("a= " + a);
+			a="abc";
+			alert("a= " + a);
+			a=1.2;
+			alert("a= " + a);
+			
+		</script>
+	</body>
+</html>
