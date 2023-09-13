@@ -36,6 +36,24 @@
 	   }
 	   accessUsername();
 	   
+	   function accessAge() {
+			var age=20;
+			alert("年龄= "+age);
+	   }
+	   
+	   accessAge();
+	   
+	   //报错，age为局部变量，出accessAge函数后就已经没了
+	   //alert("age= "+age);//Uncaught ReferenceError: age is not defined
+	   
+	   //以下的语法是很奇怪的
+	   function myfun(){
+		   //当一个变量声明的时候，没有使用var关键字，那么不管这个变量是在哪里声明的，都是全局变量！！！
+		   myname="dujubin";
+	   }
+	   //访问函数
+	   myfun();
+	   alert("myname= "+myname);//myname=dujubin
 	   
 	   </script>
 	</body>
