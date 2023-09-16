@@ -5,5 +5,131 @@
 		<title>Object类型</title>
 	</head>
 	<body>
+		<script type="text/javascript">
+			/*
+				Object类型：
+					1、Object类型是所有类型的超类，自定义的仍和类型，都默认继承Object。
+					2、Object类包括哪些属性呢？
+						prototype属性（常用的，作用是给类动态的扩展属性和函数）
+						constructor属性
+					3、Object类包含哪些函数？
+						toString（）
+						valueOf（）
+						toLocaleString（）
+					4、在JS当中，定义的类默认继承Object，即会继承Object类中的所有属性和方法
+					换句话说，就是自己定义的类中也会有prototype属性。
+					5、在JS中怎么定义类，怎么创建对象？
+						定义类的语法：（和之前学过的函数的定义语法是一样的，就是看你是直接调用，还是作为类从而创建对象）
+							第一种方式：
+								function 类名（形参）{
+									
+								}
+							第二种方式：
+								类名=function（形参）{
+									
+								}
+						创建对象的语法：
+							new 构造方法名（实参）；//构造方法名和类名一致。
+								
+			*/
+		
+		function sayHello(){
+			
+		}
+		//把sayHello当作一个普通的函数来调用。
+		sayHello();
+		
+		//把sayHello当作一个类来创建对象
+		var obj=new sayHello();//obj是一个引用，保存内存地址指向浏览器内存的堆内存中的对象。
+			
+		//定义一个学术类
+		function Student(){
+			alert("Student.....");
+		}
+		//当作函数调用
+		Student();
+		//当作类来创建对象
+		var stu=new Student();//new Student（）的Student（）也会调用一次上面的Student（）
+		alert(stu);//[object Object]
+		
+		//JS中类的定义，同时又是一个构造函数的定义
+		//在JS中类的定义和构造函数的定义是放在一起来完成的
+		function User(a,b,c){//a,b,c是形参，属于局部变量
+			//声明属性（this表示当前对象）
+			//User类中有三个属性：sno/sname/sage
+			this.sno=a;
+			this.sname=b;
+			this.sage=c;
+			
+		}
+		//创建对象
+		var u1=new User(111,"zhangsan",30);
+		//访问对象的属性
+		alert(u1.sno);
+		alert(u1.sname);
+		alert(u1.sage);
+		
+		//创建对象
+		var u2=new User(222,"jackson",55);
+		//访问对象的属性
+		alert(u2.sno);
+		alert(u2.sname);
+		alert(u2.sage);
+		
+		//访问一个对象的属性，还可以使用这种语法：
+		alert(u2["sno"]);
+		alert(u2["sname"]);
+		alert(u2["sage"]);
+		
+		//定义类的另一种语法
+		/*
+		Emp=function(a,b){
+			this.ename=a;
+			this.sal=b;
+		}
+		*/
+	   
+	   //为了见名知意，我们一般会这样写
+	   Emp=function(ename,sal){
+	   	this.ename=ename;//前一个ename是Emp这个类的属性，后一个ename是局部变量形式参数ename
+	   	this.sal=sal;//前一个sal是Emp这个类的属性，后一个sal是局部变量形式参数sal
+	   }
+	   var e1=new Emp("shish",23)
+	   alert(e1["ename"]+","+e1["sal"]);
+	   
+	   
+	   Product=function(pro,pname,price){
+		   //属性
+		   this.pro=pro;
+		   this.pname=pname;
+		   this.price=price;
+		   //函数
+		   this.getPrice=function(){
+			   return this.price;
+		   }
+	   }
+	   
+	   var pro=new Product(111,"西瓜",4.0);
+	   var price=pro.getPrice();
+	   alert(price);
+	   
+	   //可以通过prototype这个属性来给类动态扩展属性以及函数！！！
+	   Product.prototype.getPname=function(){
+		   return this.pname;
+	   }
+	   //对扩展出的getPname函数进行调用
+	   var pname=pro.getPname();
+	   alert(pname);
+	   
+	   //给String扩展函数(由于String和Object的属性和函数是通用的，所以相当于给Object也扩展了函数!!1)
+	   String.prototype.suiyi=function(){
+		   alert("给String数据类型扩展的一个函数，叫做suiyi");
+	   }
+	   //无论小String还是大String，他们的属性和函数都是通用的！！！
+	   var s1=new String("abc");
+	   var s2="abc";
+	   s1.suiyi();
+	   s2.suiyi();
+		</script>
 	</body>
 </html>
