@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>JS中的常用事件</title>
+		<title>JS的常用事件以及注册事件的两种方式</title>
 	</head>
 	<body>
 		<script type="text/javascript">
@@ -66,6 +66,7 @@
 				alert("test............");//这个函数在页面打开的时候只是注册到了按钮上了，不会被调用，在click事件发生之后才会被调用。
 			}
 			
+			//快速写法！！！！（很常用）
 			document.getElementById("mybtn2").onclick=function(){
 				alert("text22222222.....");
 			}

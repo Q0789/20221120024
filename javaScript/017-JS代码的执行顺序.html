@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JS代码的执行顺序</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//页面打开的时候，把外层函数注册到了事件上，当事件发生之后，函数执行，当外层函数执行时，即页面加载完成之后，下一行代码执行，即把内层函数注册到事件上，当事件发生时，函数执行
+		//换句话说，把外层函数看作a，内层函数看作b，那么，页面加载的时候，a函数注册给了load事件
+		//页面加载完毕之后，load事件发生了，此时执行a函数
+		//a函数在执行的过程中。b函数注册给了“id=btn”的click事件
+		//当“id=btn”的节点发生click事件之后，此时执行b函数
+		//以后就用下面的这个形式了！！！！
+		window.onload = function(){//页面加载完成之后执行函数
+			document.getElementById("btn").onclick=function(){//鼠标点击后执行函数
+				alert("hello js");
+		}
+		
+		//将上面的拆分，就是：
+		window.onload = ready;
+		function ready(){
+			document.getElementById("btn").onclick = function(){
+				alert("hello js");
+			}
+		}
+		</script>
+		<input type="button" value="hello" id="btn"/>
+		
+	</body>
+</html>

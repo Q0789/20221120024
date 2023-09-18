@@ -2,8 +2,26 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>关于代码的执行顺序</title>
+		<title>关于JS代码的执行顺序</title>
 	</head>
-	<body>
+	<!--当页面全部元素加载完毕后，即发生load事件后才会执行ready函数,即在btn加载到页面后我们就可以找到了-->
+	<body onload="ready()">
+		
+		<script type="text/javascript">
+		/*
+			//第一步：根据id去获取节点对象
+			var btn = document.getElementById("btn");//返回null（因为代码执行到此处的时候，id=“btn”的元素还没有加载到内容中，脚本块是在页面加载的时候就执行了）
+			
+			//第二步：给节点对象绑定事件
+			btn.onclick = function(){
+				alert("hello js");
+			}
+		*/
+		function ready(){
+			document.getElementById("btn").onclick=function(){//注册事件的第二种方式！！！
+				alert("hello js");
+		}
+		</script>
+		<input type="button" value="hello" id="btn"/>
 	</body>
 </html>
