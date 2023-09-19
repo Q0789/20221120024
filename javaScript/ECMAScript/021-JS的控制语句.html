@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JS的控制语句</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*	
+				1、if
+				2、swith
+				3、while
+				4、do..while
+				5、for循环
+				
+				
+				6、break
+				7、continue
+				
+				JS中特殊的：
+				8、for...in语句（了解即可）
+				9、with语句（了解即可，没有卵用！！！）
+			*/
+		   //创建JS数组(用的不是大括号，而是中括号)
+		   var arr = [false,true,1,2,"abc",3.14];//JS中数组的元素类型是任意的！！！
+		   //遍历数组
+		   for(var i = 0;i<arr.length;i++){
+			   alert(arr[i]);
+		   }
+		   
+		   //for....in语句
+		   //第一种用法：
+		   for(var i in arr){
+			   alert(i);//i是数组元素的下标，从0到最后有数据的那一位。
+			   alert(arr[i]);
+		   }
+		   
+		   //第二种用法：
+		   //for...in语句可以遍历对象的属性
+		   User = function(username,password){
+			   this.username=username;
+			   this.password=password;
+		   }
+		   
+		   var u=new User("张三","444");//u是一个对象
+		   alert(u.username+","+u.password);
+		   alert(u["username"]+","+u["password"]);
+		   
+			   
+		   for(var shuXingMing in u){
+			   alert(shuXingMing);//是属性名
+			   alert(u[shuXingMing]);//是对象的属性对应的值
+		   }
+		   
+		   //with的用法：with后面括号是对象，那么大括号里面没有对象.属性的，也就是直接属性名的，浏览器会默认为括号中对象的属性
+		   alert(u.username);
+		   alert(u.password);
+		   
+		   
+		   with(u){
+			   alert(username+","+password);
+		   }
+		</script>
+	</body>
+</html>
+<!--
+	java中的数组：
+	publid class Test{
+		public static void main(String[] args){
+			int[] arr = {1,2,3,4,5}
+			int[] arr2 =  new int[5];//等同于int[] arr={0,0,0,0,0}
+			String[] arr3 = {"a","b","c"};
+			String[] arr4 = new String[3];//等同于String[] arr4={null,null,null}
+		}
+	}
+
+
+
+-->
