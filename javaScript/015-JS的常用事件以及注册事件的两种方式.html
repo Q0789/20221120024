@@ -60,7 +60,6 @@
 		   //第二步：给按钮对象的onclick属性赋值：
 		   btnObj.onclick=doSome;//注意：千万别加小括号。btnObj.onclick=doSome();这是错误的写法
 			
-			
 			var mybtn1 = document.getElementById("mybtn1")
 			mybtn1.onclick = function(){//这个函数没有名字,叫做匿名函数，这个匿名函数也是一个回调函数
 				alert("test............");//这个函数在页面打开的时候只是注册到了按钮上了，不会被调用，在click事件发生之后才会被调用。

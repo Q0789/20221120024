@@ -5,6 +5,10 @@
 	</head>
 	<body>
 		
+		<script type="text/javascript">
+			window.alert("脚本块");//alert函数会阻塞当前页面的加载。（直到用户点击确定）
+		</script>
+		
 		<!--在需要的位置引入js脚本文件-->
 		<!--引入外部独立的js文件的时候，js文件的代码会遵循自上而下的顺序依次逐行执行-->
 		<script type="text/javascript" src="1.js"></script>

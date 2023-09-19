@@ -6,7 +6,9 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			alert(undefined==true);
+			alert(undefined==true);//false（不同类型的数据互相运算时会自动调用Boolean（）函数！！！，undefined经过布尔函数后是false，和true不相同，结果为false）
+			alert(1+true);//2
+			
 			//null,NaN,undefined数据类型不一致（Null，Number，Undefined）
 			alert(typeof null);//"object"（数据类型是Null！！！）
 			alert(typeof NaN);//"number"
