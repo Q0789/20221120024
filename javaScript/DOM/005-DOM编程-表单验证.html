@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>实战操作：表单验证</title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				//给用户名节点对象绑定失去焦点事件。(先拿到节点对象，然后绑定失去焦点事件。)
+				var usernameElt = document.getElementById("username");
+				usernameElt.onblur = function(){
+				//获取用户名,并且去除用户名的空白（用户名即为用户名节点对象中的value属性。）
+				var username= usernameElt.value;
+				//去除用户名的空白。
+				username = username.trim();
+				//判断用户名是否为空
+				//第一种方式：
+				/*
+				if(username){
+				}else{
+				}
+				*/
+				//第二种方式：
+				//if(username.length == 0){}
+				//第三种方式：
+				if(username ===  ""){
+					//获得username的span标签
+					var Error1 = document.getElementById("Error1");
+					Error1.innerText = "用户名不能为空"
+				}else{
+					//用户名不为空，继续判断长度【6-14】
+					if(username.length<6 || username.length>14){
+						//用户名长度不合理
+						document.getElementById("Error1").innerText = "用户名长度必须在6到14位";
+					}else{
+						//用户名长度合理,继续判断是否含有特殊符号
+						var regExp = /^[A-Za-z0-9]+$/;
+						var ok = regExp.test(username);
+						if(ok){
+							//用户名最终合法
+							
+						}else{
+							//用户名含有特殊符号
+							document.getElementById("Error1").innerText = "用户名只能由数字、字母组成";
+						}
+					}
+				}
+				}
+				//给用户名节点对象绑定获得焦点事件。
+				document.getElementById("username").onfocus = function(){
+					//清空非法的value
+					if(document.getElementById("Error1").innerText != ""){
+						usernameElt.value = "";
+					}
+					//清空span
+					document.getElementById("Error1").innerText = "";
+				}
+				
+				
+				//密码
+				/*
+				document.getElementById("username").onblur = function(){
+					var username = document.getElementById("username").value;
+					var usernameRegExp = /^\w+$/;
+					var ok = usernameRegExp.test(username);
+					if(!ok){
+						document.getElementById("Error1").innerText="用户名不正确，重新输入！！！";
+					}else{
+						document.getElementById("Error1").innerText="用户名正确";
+					}
+				}
+				document.getElementById("username").onfocus = function(){
+					if(document.getElementById("Error1").innerText == "用户名不正确，重新输入！！！"){
+						document.getElementById("username").value = "";
+					}
+				}
+				*/
+				
+				
+				
+				//确认密码
+				//JS代码中，一般会把节点对象在函数外定义出来，即全局变量,我们通常就这么些变量名：在节点的id后面加个Elt
+				//获取确认密码的节点对象
+				var verpasswordElt = document.getElementById("verpassword");
+				//确认密码的节点对象绑定blur事件：
+				verpasswordElt.onblur = function(){
+					if(document.getElementById("password").value == verpasswordElt.value){
+						//密码一致
+					}else{
+						//密码不一致
+						document.getElementById("Error3").innerText="确认密码和密码不一致";
+					}
+				}
+				verpasswordElt.onfocus = function(){
+					if(document.getElementById("Error3").innerText != ""){
+						verpasswordElt.value = "";
+					}
+					//清空span
+					document.getElementById("Error3").innerText = "";
+				}
+				
+				
+				
+				
+					var emailElt = document.getElementById("email");
+					emailElt.onblur = function(){
+						var email = emailElt.value;
+						var emailRegExp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+						var ok = emailRegExp.test(email);
+						if(!ok){
+							document.getElementById("Error4").innerText="邮箱不正确，重新输入！！！";
+						}else{
+							//邮箱正确
+						}
+					}
+					emailElt.onfocus = function(){
+						if(document.getElementById("Error4").innerText != ""){
+							emailElt.value = "";
+						}
+						//清空span
+						document.getElementById("Error4").innerText = "";
+					}
+			
+				
+				var submitBtnElt = document.getElementById("submitBtn");
+				submitBtnElt.onclick = function(){
+					//触发username的blur，verpassword的blur，email的blur,之后onblur就会检查是否输入的正确与否了！！！
+					usernameElt.focus();//不带on！！！直接用JS代码实现事件，不需要人工操作
+					usernameElt.blur();//不带on！！！直接用JS代码实现事件，不需要人工操作
+					
+					verpasswordElt.focus();//不带on！！！直接用JS代码实现事件，不需要人工操作
+					verpasswordElt.blur();//不带on！！！直接用JS代码实现事件，不需要人工操作
+					
+					emailElt.focus();//不带on！！！直接用JS代码实现事件，不需要人工操作
+					emailElt.blur();//不带on！！！直接用JS代码实现事件，不需要人工操作
+					//当所有表单项都是合法的时候，提交表单
+					if(document.getElementById("Error1").innerText == "" &&
+					   document.getElementById("Error3").innerText == "" &&
+					   document.getElementById("Error4").innerText == ""){
+						//提交表单,使用表单对象的submit()方法
+						//可以在这里设置属性action，也可以不在这里设置
+						document.getElementById("userForm").action = "http://localhost:8080/jd/save"
+						document.getElementById("userForm").submit();
+						
+					}
+				}
+				
+				
+			}
+		</script>
+		
+		<!--<form id="userForm" action="http://localhost:8080/jd/save" method="get">-->
+		<form id="userForm"  method="get">
+		<input type="text" id="username"/>
+		<span id="Error1" style="color: red; font-size: 12px;"></span>
+		<br>
+		
+		<input type="text" id="password"/>
+		<span id="Error2" style="color: red; font-size: 12px;"></span>
+		<br>
+		
+		<input type="text" id="verpassword"/>
+		<span id="Error3" style="color: red; font-size: 12px;"></span>
+		<br>
+		
+		<input type="text" id="email"/>
+		<span id="Error4" style="color: red; font-size: 12px;"></span>
+		<br>
+		
+		<!--把submit改成button,要不然不管前面用户填的对不对，都会跳转！-->
+		<!--给这个按钮绑定鼠标单击，从而跳转，要不然这个按钮没有任意反应-->
+		<input type="button" value="提交" id="submitBtn"/>
+		<input type="reset" value="重置"/>
+		</form>
+	</body>
+</html>
