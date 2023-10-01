@@ -5,5 +5,97 @@
 		<title>DOM编程-复选框的全选和取消全选</title>
 	</head>
 	<body>
+		<!--ctrl+k是代码格式自动对齐-->
+		<script type="text/javascript">
+			/*
+			window.onload = function(){
+				var firstChkElt = document.getElementById("firstChk");
+				firstChkElt.onclick = function(){
+					//获取第一个复选框的选中状态(checkbox对象,可以在帮助文档中找checkbox对象的相关属性和方法)
+					//根据name获取元素节点！！！（第一次用）
+					var aihaos = document.getElementsByName("aihao");//aihaos是一个数组了！！！因为右边name为aihao的有多个元素
+					if(firstChkElt.checked){
+						//全选
+						for(var i = 0;i < aihaos.length;i++){//遍历数组，拿到数组中的每一个元素
+							aihaos[i].checked = true;
+						}
+					}else{
+						//取消全选
+						for(var i = 0;i < aihaos.length;i++){//遍历数组，拿到数组中的每一个元素
+							aihaos[i].checked = false;
+						}
+					}
+				}
+			}
+			*/
+
+			//将上面的代码简化为：
+			/*
+			window.onload = function() {
+				var firstChkElt = document.getElementById("firstChk");
+				firstChkElt.onclick = function() {
+					var aihaos = document.getElementsByName("aihao");
+					for (var i = 0; i < aihaos.length; i++) {
+						aihaos[i].checked = firstChkElt.checked;
+					}
+				}
+			}
+			*/
+			//进一步优化：
+			window.onload = function() {
+				//可以先把name为aihao的全部元素节点对象拿到手
+				var aihaos = document.getElementsByName("aihao");
+				var firstChkElt = document.getElementById("firstChk");
+				//全选和取消全选
+				firstChkElt.onclick = function() {
+					var aihaos = document.getElementsByName("aihao");
+					for (var i = 0; i < aihaos.length; i++) {
+						aihaos[i].checked = firstChkElt.checked;
+					}
+				}
+				
+				//对aihaos数组进行遍历拿到name为aihaos的每个节点
+				//总量：
+				var all = aihaos.length;
+				//下面的第一个for循环只要页面加载完成之后，就会执行，就会给每个节点对象绑定上click事件
+				for(var i = 0;i < aihaos.length;i++){
+					//给每个节点绑定click事件,而下面的这个function函数只有当鼠标单击复选框的时候才会去执行
+					//所以，一定要有一个思想：函数不是从上到下依次执行，你得看这个函数的执行时机是在哪！！！
+					aihaos[i].onclick = function(){
+						var checkedCount = 0;
+						//当我们鼠标点击任意一个复选框时，当总数量和选中的数量相等时，第一个复选框选中，否则不选中
+						//通过for循环去看选中的数量有多少。
+						for(var i = 0; i<aihaos.length;i++){
+							if(aihaos[i].checked){
+								checkedCount++;
+							}
+						}
+						if(all == checkedCount){
+							firstChk.checked = true;
+						}else{
+							firstChk.checked = false;
+						}
+					}
+				}
+				
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+		<!--目的：只要给第一个打勾，那么就把下面三个全部打勾全选。-->
+		<input type="checkbox" id="firstChk"><br>
+		<input type="checkbox" name="aihao" value="smoke" />抽烟<br>
+		<input type="checkbox" name="aihao" value="drink" />喝酒<br>
+		<input type="checkbox" name="aihao" value="tt" />烫头<br>
+
+
+
+
+
+
 	</body>
 </html>

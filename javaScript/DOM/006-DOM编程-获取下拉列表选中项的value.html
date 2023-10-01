@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>获取下拉列表选中项的value</title>
+	</head>
+	<body>
+		<!--目的：选择下拉列表中的一项时，要把该项的value拿到手-->
+		<!--使用change事件，this表示当前下拉列表，当我们选中一个省份的时候，我们就会拿到拿到这个选项的value值。-->
+		<!--
+		<select onchange = "alert(this.value)">
+			<option value="">请选择省份</option>
+			<option value="001">河北省</option>
+			<option value="002">河南省</option>
+			<option value="003">山东省</option>
+			<option value="004">山西省</option>
+		</select>
+		-->
+		
+		<!--当然，我们也可以在script代码块中绑定change事件-->
+		<script type="text/javascript">
+			window.onload = function(){
+				var proElt = document.getElementById("pro");
+				proElt.onchange = function(){
+					//获取选中项的value
+					//alert(this.value);
+					//或者下面的这种方式
+					alert(proElt.value);
+					
+				}
+			}			
+			
+			
+		</script>
+		
+		
+		<select id="pro">
+			<option value="">请选择省份</option>
+			<option value="001">河北省</option>
+			<option value="002">河南省</option>
+			<option value="003">山东省</option>
+			<option value="004">山西省</option>
+		</select>
+		
+		
+		
+	</body>
+</html>
