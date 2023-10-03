@@ -5,5 +5,26 @@
 		<title>BOM编程-open和close</title>
 	</head>
 	<body>
+		<script type="text/javascript">
+			/*
+				1、BOM编程中，window对象是顶级对象，代表浏览器窗口。
+				2、window有open和close方法，可以开启窗口和关闭窗口。
+				3、open方法中可以两个参数，第一个参数为窗口的地址，第二个参数为窗口的打开位置。
+					当没有第二个参数的时候，默认是是在新窗口打开（即默认参数为blank），
+					其他的第二个参数：_self :当前窗口
+									_parent ：父窗口
+									_top ：顶级窗口
+									
+			*/
+		</script>
+		
+		<input type="button" value="开启百度(新窗口)" onclick="window.open('http://www.baidu.com');"/>
+		<input type="button" value="开启百度(当前窗口)" onclick="window.open('http://www.baidu.com','_self');"/>
+		<input type="button" value="开启百度(新窗口)" onclick="window.open('http://www.baidu.com');,'_blank'"/>
+		<input type="button" value="开启百度(父窗口)" onclick="window.open('http://www.baidu.com');,'_parent'"/>
+		<input type="button" value="开启百度(顶级窗口)" onclick="window.open('http://www.baidu.com');,'_top'"/>
+		
+		<!--打开自己的窗口-->
+		<input type="button" value="打开BOM中第二个文件" onclick="window.open('002-open.html','')">
 	</body>
 </html>

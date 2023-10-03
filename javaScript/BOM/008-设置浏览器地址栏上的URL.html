@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>设置浏览器地址栏上的URL</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function goBaidu(){
+				//拿到地址栏对象
+				//var locationObj = window.location;
+				//改地址栏对象的属性href，从而修改地址栏上的URL。
+				//locationObj.href = "http://www.baidu.com";
+				
+				//可以连起来写（创建对象+修改属性，前面之前我们用过创建对象+使用方法）
+				//window.location.href = "http://jd.com";
+				
+				//href可以省略不写
+				//window.location = "http://126.com";
+				
+				//document.location.href = "http://www.sina.com.cn";
+				document.location = "http://www.tmall.com";
+				
+				
+			}
+			
+			
+			
+		</script>
+		<input type="button" value="新浪" onclick="goBaidu()"/>
+	</body>
+</html>
